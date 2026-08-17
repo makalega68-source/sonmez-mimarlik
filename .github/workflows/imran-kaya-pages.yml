@@ -21,7 +21,7 @@ jobs:
       - name: Prepare site
         run: |
           mkdir -p _site
-          cp imran-kaya-v5.html _site/index.html
+          cp imran-kaya-v8.html _site/index.html
       - uses: actions/configure-pages@v5
         with:
           enablement: true
