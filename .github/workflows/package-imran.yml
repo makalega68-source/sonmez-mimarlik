@@ -1,0 +1,22 @@
+name: Package Imran Kaya ZIP
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Cloudflare ZIP
+        run: |
+          mkdir -p package
+          cp imran-kaya-v10.html package/index.html
+          cd package
+          zip -r ../imran-kaya-cloudflare-v10.zip .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: imran-kaya-cloudflare-v10
+          path: imran-kaya-cloudflare-v10.zip
