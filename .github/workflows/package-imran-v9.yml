@@ -1,0 +1,22 @@
+name: Package Imran Kaya v9
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare Cloudflare package
+        run: |
+          mkdir -p cloudflare-package
+          cp imran-kaya-v9.html cloudflare-package/index.html
+      - name: Upload ZIP artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: imran-kaya-cloudflare-v9
+          path: cloudflare-package/
+          if-no-files-found: error
